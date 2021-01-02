@@ -1,0 +1,44 @@
+AllCops:
+  TargetRubyVersion: 2.5
+  Exclude:
+    - Rakefile
+    - bin/**/*
+  NewCops: enable
+require:
+  - rubocop-rspec
+  - rubocop-performance
+
+Metrics/AbcSize:
+  Max: 50
+Metrics/ClassLength:
+  Max: 1500
+Metrics/MethodLength:
+  Max: 120
+Layout/LineLength:
+  Max: 120
+
+# No plan to Documentation
+Style/Documentation:
+  Enabled: false
+
+# Non English can be used for comment
+Style/AsciiComments:
+  Enabled: false
+
+Naming/FileName:
+  Exclude:
+    - lib/rspec-validates_timeliness.rb
+
+# Shoulda Matchers make do not need to add line
+# https://github.com/thoughtbot/shoulda-matchers#usage
+RSpec/EmptyLineAfterExample:
+  Enabled: false
+RSpec/ImplicitExpect:
+  Enabled: false
+RSpec/ImplicitSubject:
+  Enabled: false
+RSpec/NamedSubject:
+  Enabled: false
+Layout/MultilineBlockLayout:
+  Exclude:
+    - !ruby/regexp /_spec\.rb$/

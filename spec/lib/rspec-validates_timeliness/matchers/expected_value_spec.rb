@@ -2,18 +2,18 @@ require 'spec_helper'
 
 describe RSpec::ValidatesTimeliness::Matchers::ExpectedValue do
   describe '#equal' do
+    subject { model.equal }
+
     let(:result) { Date.current }
     let(:model) { described_class.new(result, :date) }
-
-    subject { model.equal }
 
     it { is_expected.to eq result }
   end
 
   describe '#over' do
-    let(:model) { described_class.new(value, type) }
-
     subject { model.over }
+
+    let(:model) { described_class.new(value, type) }
 
     context 'value is kind of Date' do
       let(:value) { Date.current }
@@ -37,9 +37,9 @@ describe RSpec::ValidatesTimeliness::Matchers::ExpectedValue do
   end
 
   describe '#under' do
-    let(:model) { described_class.new(value, type) }
-
     subject { model.under }
+
+    let(:model) { described_class.new(value, type) }
 
     context 'value is kind of Date' do
       let(:value) { Date.current }
@@ -63,10 +63,10 @@ describe RSpec::ValidatesTimeliness::Matchers::ExpectedValue do
   end
 
   describe '#evaluate' do
+    subject { model.send(:evaluate, value, type) }
+
     let(:model) { described_class.new(nil, nil) }
     let(:type) { :datetime }
-
-    subject { model.send(:evaluate, value, type) }
 
     shared_examples 'exactly value' do
       let(:result) { value.try("to_#{type}") }
@@ -106,7 +106,7 @@ describe RSpec::ValidatesTimeliness::Matchers::ExpectedValue do
     end
 
     context 'value is not kind of Proc, Time, DateTime, Date' do
-      let(:value) { 12345 }
+      let(:value) { 12_345 }
 
       it { is_expected.to be_nil }
     end

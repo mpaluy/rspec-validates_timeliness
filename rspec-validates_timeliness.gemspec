@@ -9,7 +9,7 @@ Gem::Specification.new do |gem|
   gem.summary       = %q{Simple RSpec matchers for validates_timeliness}
   gem.description   = %q{Simple RSpec matchers for validates_timeliness}
 
-  gem.required_ruby_version = ">= 2.1.0"
+  gem.required_ruby_version = ">= 2.5"
 
   gem.authors       = ["Yoshiyuki Hirano"]
   gem.email         = ["yhirano@aiming-inc.com"]
@@ -20,12 +20,14 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ["lib"]
 
-  gem.add_dependency "rspec", ">= 3.0"
-  gem.add_dependency "validates_timeliness", "~> 4.0"
-  gem.add_dependency "timecop", ">= 0.8.0"
-  gem.add_dependency "activesupport",  ">= 4.0"
+  gem.add_dependency "activesupport", ">= 5.2"
+  gem.add_dependency "rspec", "~> 3.9"
+  gem.add_dependency "timecop", "~> 0.9"
+  gem.add_dependency "validates_timeliness", "~> 5.0.0.beta2"
 
-  gem.add_development_dependency "rake", "~> 10.0"
-  gem.add_development_dependency "pry"
-  gem.add_development_dependency "activemodel", ">= 4.0"
+  gem.add_development_dependency "activemodel", ">= 5.2"
+  gem.add_development_dependency "rake", "~> 13"
+  gem.add_development_dependency "rubocop", "~> 1.3.1"
+  gem.add_development_dependency "rubocop-performance", "~> 1.9.1"
+  gem.add_development_dependency "rubocop-rspec", "~> 2.0.1"
 end

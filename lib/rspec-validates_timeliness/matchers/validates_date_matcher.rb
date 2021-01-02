@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module RSpec::ValidatesTimeliness
   module Matchers
     def validates_date(attr_name)
@@ -13,4 +15,3 @@ module RSpec::ValidatesTimeliness
     end
   end
 end
-

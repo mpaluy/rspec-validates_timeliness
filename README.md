@@ -13,7 +13,7 @@ Simple RSpec matchers for [validates_timeliness](https://github.com/adzap/valida
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'rspec-validates_timeliness'
+gem 'rspec-validates_timeliness', github: 'say8425/rspec-validates_timeliness'
 ```
 
 And then execute:

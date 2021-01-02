@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module RSpec::ValidatesTimeliness
   module Matchers
     class ValidationMatcher
@@ -10,27 +12,27 @@ module RSpec::ValidatesTimeliness
       end
 
       def is_at(value = nil, &block)
-        options[__method__] = block_given? ? block : value
+        options[__method__] = block || value
         self
       end
 
       def after(value = nil, &block)
-        options[__method__] = block_given? ? block : value
+        options[__method__] = block || value
         self
       end
 
       def on_or_after(value = nil, &block)
-        options[__method__] = block_given? ? block : value
+        options[__method__] = block || value
         self
       end
 
       def before(value = nil, &block)
-        options[__method__] = block_given? ? block : value
+        options[__method__] = block || value
         self
       end
 
       def on_or_before(value = nil, &block)
-        options[__method__] = block_given? ? block : value
+        options[__method__] = block || value
         self
       end
 
@@ -128,7 +130,7 @@ module RSpec::ValidatesTimeliness
       end
 
       def type
-        fail NotImplementedError
+        raise NotImplementedError
       end
 
       delegate :valid?, to: :validator_proxy
@@ -136,4 +138,3 @@ module RSpec::ValidatesTimeliness
     end
   end
 end
-

@@ -4,8 +4,10 @@ describe RSpec::ValidatesTimeliness::Matchers::ValidationMatcher do
   let(:attr_name) { :one }
   let(:model) { described_class.new(attr_name) }
 
-  %i(is_at after on_or_after before on_or_before).each do |option_name|
+  %i[is_at after on_or_after before on_or_before].each do |option_name|
     describe "##{option_name}" do
+      subject { model.try(option_name, value) }
+
       shared_examples 'exactly chain' do
         it 'returns itself' do
           is_expected.to eq model
@@ -13,8 +15,6 @@ describe RSpec::ValidatesTimeliness::Matchers::ValidationMatcher do
           expect(options[option_name]).to eq value
         end
       end
-
-      subject { model.try(option_name, value) }
 
       context 'with not block given' do
         let(:value) { Date.current }
@@ -31,6 +31,8 @@ describe RSpec::ValidatesTimeliness::Matchers::ValidationMatcher do
   end
 
   describe '#between' do
+    subject { model.between(value) }
+
     shared_examples 'exactly chain' do
       it 'returns itself' do
         is_expected.to eq model
@@ -40,8 +42,6 @@ describe RSpec::ValidatesTimeliness::Matchers::ValidationMatcher do
         expect(options[key]).to eq value.last
       end
     end
-
-    subject { model.between(value) }
 
     context 'value is kind of Array' do
       let(:value) { [1.week.ago.to_date, 1.week.since.to_date] }
@@ -65,6 +65,8 @@ describe RSpec::ValidatesTimeliness::Matchers::ValidationMatcher do
   end
 
   describe '#matches' do
+    subject { model.matches?(expected) }
+
     let(:expected) { nil }
 
     before do
@@ -72,25 +74,23 @@ describe RSpec::ValidatesTimeliness::Matchers::ValidationMatcher do
       expect(model).to receive(:all_options_correct?).and_return(true)
     end
 
-    subject { model.matches?(expected) }
-
     it { is_expected.to be_truthy }
   end
 
   describe '#failure_message' do
+    subject { model.failure_message }
+
     let(:base_description) { "validate that :#{attr_name} must be" }
     let(:result) { "Expected #{base_description}" }
-
-    subject { model.failure_message }
 
     it { is_expected.to match result }
   end
 
   describe '#failure_message_when_negated' do
+    subject { model.failure_message_when_negated }
+
     let(:base_description) { "validate that :#{attr_name} must be" }
     let(:result) { "Did not expect #{base_description}" }
-
-    subject { model.failure_message_when_negated }
 
     it { is_expected.to match result }
   end

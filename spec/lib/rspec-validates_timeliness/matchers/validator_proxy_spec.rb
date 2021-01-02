@@ -5,6 +5,7 @@ describe RSpec::ValidatesTimeliness::Matchers::ValidatorProxy do
     class DummyModel
       include ActiveModel::Model
       attr_reader :one
+
       validates :one, presence: true
     end
   end

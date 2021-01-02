@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module RSpec::ValidatesTimeliness
   module Matchers
     class ExpectedValue
@@ -37,7 +39,6 @@ module RSpec::ValidatesTimeliness
           value.call.try("to_#{type}")
         when Time, DateTime, Date, String
           value.try("to_#{type}")
-        else nil
         end
       end
     end

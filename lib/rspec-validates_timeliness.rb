@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rspec/core'
 require 'rspec-validates_timeliness/matchers'
 require 'rspec-validates_timeliness/version'
