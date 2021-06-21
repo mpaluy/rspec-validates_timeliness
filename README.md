@@ -1,6 +1,8 @@
 # RSpec::ValidatesTimeliness [![Build Status](https://travis-ci.org/yhirano55/rspec-validates_timeliness.svg?branch=master)](https://travis-ci.org/yhirano55/rspec-validates_timeliness)
 
-Simple RSpec matchers for [validates_timeliness](https://github.com/adzap/validates_timeliness)
+Simple RSpec matchers for [validates_timeliness](https://github.com/adzap/validates_timeliness).
+
+Orginal gem has [rails 4.2 dependency isssue](https://github.com/yhirano55/rspec-validates_timeliness/issues/13), but this fokred gem was updated for Rails 5 and 6.
 
 ## Matchers
 
