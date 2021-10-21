@@ -23,7 +23,7 @@ module RSpec::ValidatesTimeliness
       attr_reader :model, :attr_name
 
       def set_value(value)
-        model.instance_variable_set(:"@#{attr_name}", value)
+        model[attr_name] = value
       end
 
       def validate!
